@@ -50,26 +50,7 @@ public class CandyGenerator : MonoBehaviour
 
     public void ManageCandy(CandyController candy_script, PlayerMovement player_script = null)
     {
-        if (player_script == null)
-        {
-            Destroy(candy_script.gameObject);
-            return;
-        }
-        if (candy_script.frame == 3)
-        {
-            SceneManager.LoadScene("GameOver");
-            return;
-        }
-        int lives = player_script.player_lives;
-        int live_changer = candy_script.lifeChanges;
-        lives += live_changer;
-        print(lives);
-        if (lives <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-        player_script.player_lives = lives;
-        Destroy(candy_script.gameObject);
+        player_script.puntaje += candy_script.scorechanges;
     }
 
 

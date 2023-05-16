@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
-    public KeyCode up;
-    public KeyCode down;
     private Rigidbody2D myRB;
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float speed;
     private float limitSuperior;
     private float limitInferior;
     public int player_lives = 4;
+    Vector2 movimiento;
+    public int puntaje;
+    [SerializeField] AudioSource golpe;
+    [SerializeField] AudioSource comer;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (up == KeyCode.None) up = KeyCode.UpArrow;
-        if (down == KeyCode.None) down = KeyCode.DownArrow;
         myRB = GetComponent<Rigidbody2D>();
         SetMinMax();
     }
@@ -24,18 +25,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(up) && transform.position.y < limitSuperior)
-        {
-            myRB.velocity = new Vector2(0f, speed);
-        }
-        else if (Input.GetKey(down) && transform.position.y > limitInferior)
-        {
-            myRB.velocity = new Vector2(0f, -speed);
-        }
-        else
-        {
-            myRB.velocity = Vector2.zero;
-        }
+   
+    }
+
+    private void FixedUpdate()
+    {
+        Movimiento();
+
+    }
+    void Movimiento()
+    {
+        myRB.velocity = movimiento * speed;
     }
 
     void SetMinMax()
@@ -50,6 +50,28 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Candy")
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
+            comer.Play();
+            Destroy(other.gameObject);
+
+        }
+        else if(other.tag == "Enemie")
+        {
+            EnemiesGenerator.instance.ManageEnemie(other.gameObject.GetComponent<Enemie>(), this);
+            transform.position = new Vector2(-5, 0);
+            golpe.Play();
+            
         }
     }
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+        movimiento = new Vector2(0, inputMovement.y);
+    }
+
+    
+
+
+
+
+  
 }
