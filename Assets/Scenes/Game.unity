@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb667f61eda7f684babc3494f59981d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1029094209}
 --- !u!4 &190723870
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  player_lives: 4
+  player_lives: 3
   puntaje: 0
   golpe: {fileID: 1714896976}
   comer: {fileID: 1714896977}
@@ -1633,6 +1633,7 @@ MonoBehaviour:
   - {fileID: 5991686176134336339, guid: 4ca734ed6332dc14a9ac2932634e3cdd, type: 3}
   - {fileID: 7679793561126234375, guid: e7542e08ec32cc64a9cdd3742cb2457d, type: 3}
   actual_candies: []
+  gui: {fileID: 190723869}
 --- !u!4 &2069459772
 Transform:
   m_ObjectHideFlags: 0

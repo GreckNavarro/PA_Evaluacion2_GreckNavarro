@@ -12,6 +12,7 @@ public class CandyGenerator : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public List<GameObject> actual_candies = new List<GameObject>();
+    public GUIManager gui;
 
     void Awake()
     {
@@ -51,6 +52,7 @@ public class CandyGenerator : MonoBehaviour
     public void ManageCandy(CandyController candy_script, PlayerMovement player_script = null)
     {
         player_script.puntaje += candy_script.scorechanges;
+        gui.UpdateText(candy_script.scorechanges);
     }
 
 
