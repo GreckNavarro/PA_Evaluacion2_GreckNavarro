@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3307e4697e2bf4147b679a7931eb24f1, type: 3}
-  m_Name: MasterVolume
+  m_Script: {fileID: 11500000, guid: 14dc09769a69f234d8f45c244cf5981e, type: 3}
+  m_Name: Puntajes
   m_EditorClassIdentifier: 
-  myMixer: {fileID: 24100000, guid: de2799deb2781e54e9520d97e46a5a17, type: 2}
-  channelVolumen: MasterVolume
-  currentVolume: 0
-  isMuted: 1
+  MaxScore:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

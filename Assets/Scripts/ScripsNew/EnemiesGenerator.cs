@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemiesGenerator : MonoBehaviour
 {
-    
+
     public static EnemiesGenerator instance;
     public List<GameObject> Enemies = new List<GameObject>();
     private float time_to_create = 2f;
@@ -13,6 +13,7 @@ public class EnemiesGenerator : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public List<GameObject> Enemies_actual = new List<GameObject>();
+    [SerializeField] AudioSource myaudio;
 
     void Awake()
     {
@@ -28,6 +29,10 @@ public class EnemiesGenerator : MonoBehaviour
         SetMinMax();
     }
 
+    public AudioSource ObtenerAudio()
+    {
+        return myaudio;
+    }
 
     void Update()
     {
@@ -51,7 +56,7 @@ public class EnemiesGenerator : MonoBehaviour
 
     public void ManageEnemie(Enemie enemigo_scrip, PlayerMovement player_script = null)
     {
-        
+        myaudio.Play();
         if (player_script == null)
         {
             Destroy(enemigo_scrip.gameObject);
@@ -67,10 +72,6 @@ public class EnemiesGenerator : MonoBehaviour
         int live_changer = enemigo_scrip.lifeChanges1;
         lives += live_changer;
         print(lives);
-        if (lives <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
         player_script.player_lives = lives;
         Destroy(enemigo_scrip.gameObject);
         

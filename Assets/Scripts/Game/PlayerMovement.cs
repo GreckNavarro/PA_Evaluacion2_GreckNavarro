@@ -12,9 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public int player_lives = 4;
     Vector2 movimiento;
     public int puntaje;
-    [SerializeField] AudioSource golpe;
-    [SerializeField] AudioSource comer;
-
+    [SerializeField] AudioSource controlador;
+    [SerializeField] AudioClip[] audios1;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Candy")
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
-            comer.Play();
+            controlador.clip = audios1[0];
+            controlador.Play();
             Destroy(other.gameObject);
 
         }
@@ -58,8 +58,22 @@ public class PlayerMovement : MonoBehaviour
         {
             EnemiesGenerator.instance.ManageEnemie(other.gameObject.GetComponent<Enemie>(), this);
             transform.position = new Vector2(-5, 0);
-            golpe.Play();
-            
+            controlador.clip = audios1[1];
+            controlador.Play();
+        }
+        else if(other.tag == "Coffee")
+        {
+            CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
+            controlador.clip = audios1[2];
+            controlador.Play();
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Mushroom")
+        {
+            CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
+           controlador.clip = audios1[2];
+           controlador.Play();
+            Destroy(other.gameObject);
         }
     }
     public void OnMovement(InputAction.CallbackContext value)

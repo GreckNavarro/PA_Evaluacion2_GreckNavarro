@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3307e4697e2bf4147b679a7931eb24f1, type: 3}
-  m_Name: MasterVolume
+  m_Name: EffectVolume
   m_EditorClassIdentifier: 
   myMixer: {fileID: 24100000, guid: de2799deb2781e54e9520d97e46a5a17, type: 2}
-  channelVolumen: MasterVolume
+  channelVolumen: EffectVolume
   currentVolume: 0
-  isMuted: 1
+  isMuted: 0

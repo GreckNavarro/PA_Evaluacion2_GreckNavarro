@@ -7,7 +7,7 @@ public class CandyGenerator : MonoBehaviour
 {
     public static CandyGenerator instance;
     public List<GameObject> Candies = new List<GameObject>();
-    private float time_to_create = 4f;
+    private float time_to_create = 1f;
     private float actual_time = 0f;
     private float limitSuperior;
     private float limitInferior;
@@ -51,6 +51,12 @@ public class CandyGenerator : MonoBehaviour
 
     public void ManageCandy(CandyController candy_script, PlayerMovement player_script = null)
     {
+        if (player_script == null)
+        {
+            Destroy(candy_script.gameObject);
+            return;
+        }
+
         player_script.puntaje += candy_script.scorechanges;
         gui.UpdateText(candy_script.scorechanges);
     }
