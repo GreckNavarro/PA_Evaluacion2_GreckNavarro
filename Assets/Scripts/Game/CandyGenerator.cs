@@ -57,8 +57,8 @@ public class CandyGenerator : MonoBehaviour
             return;
         }
 
-        player_script.puntaje += candy_script.scorechanges;
-        gui.UpdateText(candy_script.scorechanges);
+       // player_script.puntaje += candy_script.scorechanges;
+        //gui.UpdateText(candy_script.scorechanges);
     }
 
 

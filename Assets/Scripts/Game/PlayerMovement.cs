@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     private float limitSuperior;
     private float limitInferior;
-    public int player_lives = 4;
     Vector2 movimiento;
-    public int puntaje;
     [SerializeField] AudioSource controlador;
     [SerializeField] AudioClip[] audios1;
     // Start is called before the first frame update
