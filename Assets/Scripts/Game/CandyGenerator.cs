@@ -7,7 +7,7 @@ public class CandyGenerator : MonoBehaviour
 {
     public static CandyGenerator instance;
     public List<GameObject> Candies = new List<GameObject>();
-    private float time_to_create = 1f;
+    private float time_to_create = 0.5f;
     private float actual_time = 0f;
     private float limitSuperior;
     private float limitInferior;
@@ -36,7 +36,7 @@ public class CandyGenerator : MonoBehaviour
         {
             GameObject candy = Instantiate(Candies[Random.Range(0, Candies.Count)],
             new Vector3(transform.position.x, Random.Range(limitInferior, limitSuperior), 0f), Quaternion.identity);
-            candy.GetComponent<Rigidbody2D>().velocity = new Vector2(-2f, 0);
+            candy.GetComponent<Rigidbody2D>().velocity = new Vector2(-5f, 0);
             actual_time = 0f;
             actual_candies.Add(candy);
         }

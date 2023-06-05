@@ -8,7 +8,7 @@ public class EnemiesGenerator : MonoBehaviour
 
     public static EnemiesGenerator instance;
     public List<GameObject> Enemies = new List<GameObject>();
-    private float time_to_create = 0.5f;
+    private float time_to_create = 1.0f;
     private float actual_time = 0f;
     private float limitSuperior;
     private float limitInferior;
@@ -42,6 +42,7 @@ public class EnemiesGenerator : MonoBehaviour
             GameObject enemie = Instantiate(Enemies[Random.Range(0, Enemies.Count)],
             new Vector3(transform.position.x, Random.Range(limitInferior, limitSuperior), 0f), Quaternion.identity);
             enemie.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
+            enemie.GetComponent<Enemie>().SetAudio(myaudio);
             actual_time = 0f;
             Enemies_actual.Add(enemie);
         }
@@ -54,28 +55,6 @@ public class EnemiesGenerator : MonoBehaviour
         limitSuperior = (bounds.y * 0.9f);
     }
 
-    public void ManageEnemie(Enemie enemigo_scrip, PlayerMovement player_script = null)
-    {
-        myaudio.Play();
-        if (player_script == null)
-        {
-            Destroy(enemigo_scrip.gameObject);
-            return;
-        }
-
-        if (enemigo_scrip.frame1 == 3)
-        {
-            SceneManager.LoadScene("GameOver");
-            return;
-        }
-        /*int lives = player_script.player_lives;
-        int live_changer = enemigo_scrip.lifeChanges1;
-        lives += live_changer;
-        print(lives);
-        player_script.player_lives = lives;
-        Destroy(enemigo_scrip.gameObject);
-        */
-    }
 
 
 }
